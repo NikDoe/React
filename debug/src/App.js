@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 
 import CourseGoalList from './components/CourseGoals/CourseGoalList/CourseGoalList';
 import CourseInput from './components/CourseGoals/CourseInput/CourseInput';
@@ -13,15 +13,14 @@ const App = () => {
   const addGoalHandler = enteredText => {
     setCourseGoals(prevGoals => {
       const updatedGoals = [...prevGoals];
-      updatedGoals.unshift({ text: enteredText, id: 'goal1' });
+      updatedGoals.unshift({ text: enteredText, id: new Date().getTime().toString() });
       return updatedGoals;
     });
   };
 
   const deleteItemHandler = goalId => {
     setCourseGoals(prevGoals => {
-      const updatedGoals = prevGoals.filter(goal => goal.id !== goalId);
-      return updatedGoals;
+      return prevGoals.filter(goal => goal.id !== goalId);
     });
   };
 
