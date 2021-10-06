@@ -12,13 +12,16 @@
   display: block;
   width: 100%;
   border: 1px solid #ccc;
+  border-radius: 5px;
   font: inherit;
   line-height: 1.5rem;
   padding: 0 0.25rem;
+  color: #818181;
+  transition: all .3s ease-in-out;
 }
 
 .form-control input:focus {
   outline: none;
-  background: #fad0ec;
-  border-color: #8b005d;
+  background: rgba(255, 255, 36, 0.4);
+  color: #111111;
 }
