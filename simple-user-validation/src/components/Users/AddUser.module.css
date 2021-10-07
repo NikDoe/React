@@ -1,0 +1,34 @@
+.input {
+    margin: 2rem auto;
+    padding: 1rem;
+    width: 90%;
+    max-width: 40rem;
+}
+
+.input label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #658ec6;
+    font-weight: 500;
+    opacity: 0.8;
+}
+
+.input input {
+    font: inherit;
+    display: block;
+    width: 100%;
+    padding: 0.15rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(
+            to right bottom,
+            rgba(255, 255, 255, 0.7),
+            rgba(255, 255, 255, 0.3)
+    );
+    border: none;
+    border-radius: 2rem;
+}
+
+.input input:focus {
+    outline: none;
+    border-color: #4f005f;
+}
