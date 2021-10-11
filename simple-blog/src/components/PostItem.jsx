@@ -2,15 +2,15 @@ import React from 'react';
 import styles from './PostItem.module.css'
 import MyButton from "./UI/Button/MyButton";
 
-const PostItem = (props) => {
+const PostItem = ({num, post, remove}) => {
     return (
         <div className={styles.post}>
             <div className="post__content">
-                <strong>{props.num}. {props.post.title}</strong>
-                <div>{props.post.body}</div>
+                <strong>{num}. {post.title}</strong>
+                <div>{post.body}</div>
             </div>
             <div className="post__btns">
-                <MyButton disabled>удалить</MyButton>
+                <MyButton onClick={()=> {remove(post)}}>удалить</MyButton>
             </div>
         </div>
     );

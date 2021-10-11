@@ -17,10 +17,22 @@ function App() {
         )
     }
 
+    const removePost = post => {
+        setPosts(
+            posts.filter(
+                p => p.id !== post.id
+            )
+        )
+    }
+
     return (
         <div className={styles.App}>
             <PostForm create={createPost}/>
-            <PostsList posts={posts} title='список постов 1'/>
+            {
+                posts.length !== 0
+                    ? <PostsList remove={removePost} posts={posts} title='список постов 1'/>
+                    : <h1>список постов пуст 👻</h1>
+            }
         </div>
     );
 }
