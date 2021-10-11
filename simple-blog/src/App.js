@@ -1,22 +1,25 @@
 import {useState} from "react";
 import PostsList from "./components/PostsList";
-import MyInput from "./components/UI/Input/MyInput";
-import MyButton from "./components/UI/Button/MyButton";
 import styles from "./App.module.css";
+import PostForm from "./components/UI/PostForm";
 
 function App() {
 
     const [posts, setPosts] = useState([
-        {id: new Date().getTime(), num: 1, title: 'Javascript', body: 'description'}
+        {id: Date.now(), title: 'Javascript', body: 'description'}
     ]);
+
+    const createPost = (newPost) => {
+        setPosts(
+            prevPosts => {
+                return [...prevPosts, newPost]
+            }
+        )
+    }
 
     return (
         <div className={styles.App}>
-            <form>
-                <MyInput type="text" placeholder='заголовок'/>
-                <MyInput type="text" placeholder='описание поста'/>
-                <MyButton>добавить пост</MyButton>
-            </form>
+            <PostForm create={createPost}/>
             <PostsList posts={posts} title='список постов 1'/>
         </div>
     );
