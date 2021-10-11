@@ -1,7 +1,7 @@
 import {useState} from "react";
 import PostsList from "./components/PostsList";
 import styles from "./App.module.css";
-import PostForm from "./components/UI/PostForm";
+import PostForm from "./components/PostForm";
 
 function App() {
 
