@@ -1,6 +1,5 @@
-import styles from './App.module.css'
-import PostItem from "./components/PostItem";
 import {useState} from "react";
+import PostsList from "./components/PostsList";
 
 function App() {
 
@@ -9,14 +8,7 @@ function App() {
     ]);
 
     return(
-        <div className={styles.App}>
-            <h1>
-                список постов
-            </h1>
-            {posts.map(
-                post => <PostItem key={post.id} post={post}/>
-            )}
-        </div>
+        <PostsList posts={posts} title='список постов 1'/>
     );
 }
 
