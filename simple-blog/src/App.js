@@ -10,8 +10,8 @@ function App() {
     const [filter, setFilter] = useState({query: '', sort: ''})
 
     const sortedPosts = useMemo(
-        ()=> {
-            if(filter.sort){
+        () => {
+            if (filter.sort) {
                 return [...posts].sort((a, b) => a[filter.sort].localeCompare(b[filter.sort]));
             }
             return posts;
@@ -20,7 +20,7 @@ function App() {
     )
 
     const sortedAndSearchPosts = useMemo(
-        ()=> {
+        () => {
             return sortedPosts.filter(
                 post => post.title.toLowerCase().includes(filter.query.toLowerCase())
             );
@@ -52,11 +52,7 @@ function App() {
                 filter={filter}
                 setFilter={setFilter}
             />
-            {
-                sortedAndSearchPosts.length !== 0
-                    ? <PostsList remove={removePost} posts={sortedAndSearchPosts} title='список постов 1'/>
-                    : <h1>список постов пуст 👻</h1>
-            }
+            <PostsList remove={removePost} posts={sortedAndSearchPosts} title='список постов 1'/>
         </div>
     );
 }
