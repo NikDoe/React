@@ -27,6 +27,15 @@ function App() {
         [selectedSort, posts]
     )
 
+    const sortedAndSearchPosts = useMemo(
+        ()=> {
+            return sortedPosts.filter(
+                post => post.title.toLowerCase().includes(searchQuery.toLowerCase())
+            );
+        },
+        [searchQuery, sortedPosts]
+    )
+
     const createPost = (newPost) => {
         setPosts(
             prevPosts => {
@@ -73,8 +82,8 @@ function App() {
                 />
             </div>
             {
-                posts.length !== 0
-                    ? <PostsList remove={removePost} posts={sortedPosts} title='список постов 1'/>
+                sortedAndSearchPosts.length !== 0
+                    ? <PostsList remove={removePost} posts={sortedAndSearchPosts} title='список постов 1'/>
                     : <h1>список постов пуст 👻</h1>
             }
         </div>
