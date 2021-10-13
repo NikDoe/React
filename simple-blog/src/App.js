@@ -1,35 +1,18 @@
-import {useMemo, useState} from "react";
+import {useState} from "react";
 import PostsList from "./components/PostsList";
 import styles from "./App.module.css";
 import PostForm from "./components/PostForm";
 import PostFilter from "./components/PostFilter";
 import MyModal from "./components/UI/Modal/MyModal";
 import MyButton from "./components/UI/Button/MyButton";
+import {usePosts} from "./hooks/usePosts";
 
 function App() {
 
     const [posts, setPosts] = useState([]);
     const [filter, setFilter] = useState({query: '', sort: ''})
     const [modal, setModal] = useState(false);
-
-    const sortedPosts = useMemo(
-        () => {
-            if (filter.sort) {
-                return [...posts].sort((a, b) => a[filter.sort].localeCompare(b[filter.sort]));
-            }
-            return posts;
-        },
-        [filter.sort, posts]
-    )
-
-    const sortedAndSearchPosts = useMemo(
-        () => {
-            return sortedPosts.filter(
-                post => post.title.toLowerCase().includes(filter.query.toLowerCase())
-            );
-        },
-        [filter.query, sortedPosts]
-    )
+    const sortedAndSearchPosts = usePosts(posts, filter.sort, filter.query);
 
     const createPost = (newPost) => {
         setPosts(
@@ -54,7 +37,7 @@ function App() {
                 onClick={() => setModal(true)}
                 style={{margin: '30px 0px'}}
             >
-                создать полльзователя
+                создать пост
             </MyButton>
             <MyModal
                 visible={modal}
